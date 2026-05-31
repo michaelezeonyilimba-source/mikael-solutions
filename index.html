@@ -24,7 +24,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Syne:wght@400;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#08101E;--bg2:#0D1829;--bg3:#111F33;--card:#0F1C2E;
@@ -32,7 +32,7 @@
   --grey:#8BA0BC;--grey2:#4A6180;--gl:rgba(139,160,188,0.10);
   --w:#EEF2F8;--wd:rgba(238,242,248,0.62);--wf:rgba(238,242,248,0.10);
   --acc:#60A5FA;
-  --sans:'DM Sans','Syne',sans-serif;
+  --sans:'Syne',sans-serif;
   --serif:'Cormorant Garamond',Georgia,serif;
   --mono:'JetBrains Mono',monospace;
 }
@@ -183,6 +183,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:cen
 .pvis{background:var(--bg3);min-height:190px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;flex-direction:column;gap:.7rem;flex-shrink:0}
 .pcard.sp2 .pvis{width:280px;min-height:100%}
 .pvico{font-size:3.5rem;opacity:.48;position:relative;z-index:2}
+.pscr{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;opacity:0;transition:opacity .5s ease;z-index:1}
+.pscr.loaded{opacity:1}
+.pscr-shade{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 55%,var(--bg3) 100%);z-index:2;pointer-events:none}
+.ppscr{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;opacity:0;transition:opacity .5s ease;z-index:1}
+.ppscr.loaded{opacity:1}
+.ppscr-shade{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 55%,var(--bg2) 100%);z-index:2;pointer-events:none}
 .pvurl{font-family:var(--mono);font-size:.62rem;color:var(--blue);opacity:.8;position:relative;z-index:2;letter-spacing:.08em}
 .pvglow{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,var(--blue-g),transparent 65%)}
 .pvlive{position:absolute;top:.9rem;right:.9rem;z-index:3;display:flex;align-items:center;gap:.38rem;background:rgba(34,197,94,.14);border:1px solid rgba(34,197,94,.28);color:#22c55e;font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;padding:.28rem .65rem;border-radius:100px}
@@ -435,7 +441,7 @@ footer{background:#040810;padding:1.8rem 6%;display:flex;align-items:center;just
     <p class="slead">A few highlights — visit <strong>Field Work</strong> for the full portfolio with all projects.</p>
     <div class="ppgrid">
       <div class="ppcard feat" onclick="go('work')">
-        <div class="ppvis tall"><div class="ppglow"></div><span class="ppico">📦</span></div>
+        <div class="ppvis tall"><div class="ppglow"></div><img class="ppscr" data-src="https://api.microlink.io/?url=https%3A%2F%2Fovasabitracker.netlify.app&screenshot=true&meta=false&embed=screenshot.url" alt="Ova-Sabi preview" onload="this.classList.add('loaded')"><div class="ppscr-shade"></div></div>
         <div class="ppbody">
           <div class="pptype">Featured · SaaS Platform</div>
           <div class="pptitle">Ova-Sabi Inventory Manager</div>
@@ -444,7 +450,7 @@ footer{background:#040810;padding:1.8rem 6%;display:flex;align-items:center;just
         </div>
       </div>
       <div class="ppcard" onclick="go('work')">
-        <div class="ppvis"><div class="ppglow"></div><span class="ppico">🌊</span></div>
+        <div class="ppvis"><div class="ppglow"></div><img class="ppscr" data-src="https://api.microlink.io/?url=https%3A%2F%2Fwww.rivuletsolutions.com&screenshot=true&meta=false&embed=screenshot.url" alt="Rivulet Solutions preview" onload="this.classList.add('loaded')"><div class="ppscr-shade"></div></div>
         <div class="ppbody">
           <div class="pptype">Client Website · Corporate</div>
           <div class="pptitle">Rivulet Solutions Ltd</div>
@@ -453,7 +459,7 @@ footer{background:#040810;padding:1.8rem 6%;display:flex;align-items:center;just
         </div>
       </div>
       <div class="ppcard" onclick="go('work')">
-        <div class="ppvis"><div class="ppglow"></div><span class="ppico">🏢</span></div>
+        <div class="ppvis"><div class="ppglow"></div><img class="ppscr" data-src="https://api.microlink.io/?url=https%3A%2F%2Fwww.pyaleworkhub.com&screenshot=true&meta=false&embed=screenshot.url" alt="Pyale Workhub preview" onload="this.classList.add('loaded')"><div class="ppscr-shade"></div></div>
         <div class="ppbody">
           <div class="pptype">IT Lead · Digital Ops</div>
           <div class="pptitle">Pyale Workhub</div>
@@ -530,7 +536,7 @@ footer{background:#040810;padding:1.8rem 6%;display:flex;align-items:center;just
   <div class="pgrid" id="pgrid">
 
     <div class="pcard sp2" data-c="web">
-      <div class="pvis"><div class="pvglow"></div><div class="pvico">📦</div><div class="pvurl">ovasabitracker.netlify.app</div><div class="pvlive"><span class="pvdot"></span>Live</div></div>
+      <div class="pvis"><div class="pvglow"></div><img class="pscr" data-src="https://api.microlink.io/?url=https%3A%2F%2Fovasabitracker.netlify.app&screenshot=true&meta=false&embed=screenshot.url" alt="Ova-Sabi live preview" onload="this.classList.add('loaded')"><div class="pscr-shade"></div><div class="pvico" style="z-index:3;opacity:.15">📦</div><div class="pvurl" style="z-index:4">ovasabitracker.netlify.app</div><div class="pvlive" style="z-index:5"><span class="pvdot"></span>Live</div></div>
       <div class="pbody">
         <div class="ptype">Featured · SaaS Platform · Phase 2 Deployed</div>
         <div class="ptitle">Ova-Sabi Inventory &amp; Expiry Manager</div>
@@ -542,7 +548,7 @@ footer{background:#040810;padding:1.8rem 6%;display:flex;align-items:center;just
     </div>
 
     <div class="pcard" data-c="web">
-      <div class="pvis"><div class="pvglow"></div><div class="pvico">🌊</div><div class="pvurl">rivuletsolutions.com</div><div class="pvlive"><span class="pvdot"></span>Live</div></div>
+      <div class="pvis"><div class="pvglow"></div><img class="pscr" data-src="https://api.microlink.io/?url=https%3A%2F%2Fwww.rivuletsolutions.com&screenshot=true&meta=false&embed=screenshot.url" alt="Rivulet Solutions live preview" onload="this.classList.add('loaded')"><div class="pscr-shade"></div><div class="pvurl" style="z-index:4">rivuletsolutions.com</div><div class="pvlive" style="z-index:5"><span class="pvdot"></span>Live</div></div>
       <div class="pbody">
         <div class="ptype">Client Website · Corporate</div>
         <div class="ptitle">Rivulet Solutions Limited</div>
@@ -554,7 +560,7 @@ footer{background:#040810;padding:1.8rem 6%;display:flex;align-items:center;just
     </div>
 
     <div class="pcard" data-c="web">
-      <div class="pvis"><div class="pvglow"></div><div class="pvico">⚡</div><div class="pvurl">fastfactservices.com</div><div class="pvlive"><span class="pvdot"></span>Live</div></div>
+      <div class="pvis"><div class="pvglow"></div><img class="pscr" data-src="https://api.microlink.io/?url=https%3A%2F%2Fwww.fastfactservices.com&screenshot=true&meta=false&embed=screenshot.url" alt="FastFact Services live preview" onload="this.classList.add('loaded')"><div class="pscr-shade"></div><div class="pvurl" style="z-index:4">fastfactservices.com</div><div class="pvlive" style="z-index:5"><span class="pvdot"></span>Live</div></div>
       <div class="pbody">
         <div class="ptype">Client Website · Marketing Services</div>
         <div class="ptitle">FastFact Services</div>
@@ -566,14 +572,14 @@ footer{background:#040810;padding:1.8rem 6%;display:flex;align-items:center;just
     </div>
 
     <div class="pcard sp2" data-c="it">
-      <div class="pvis"><div class="pvglow"></div><div class="pvico">🏢</div><div class="pvurl">pyaleworkhub.com</div><div class="pvlive"><span class="pvdot"></span>Live</div></div>
+      <div class="pvis"><div class="pvglow"></div><img class="pscr" data-src="https://api.microlink.io/?url=https%3A%2F%2Fwww.pyaleworkhub.com&screenshot=true&meta=false&embed=screenshot.url" alt="Pyale Workhub live preview" onload="this.classList.add('loaded')"><div class="pscr-shade"></div><div class="pvurl" style="z-index:4">pyaleworkhub.com</div><div class="pvlive" style="z-index:5"><span class="pvdot"></span>Live</div></div>
       <div class="pbody">
         <div class="ptype">IT Lead · Digital Transformation · CRM · Marketing</div>
         <div class="ptitle">Pyale Workhub — Digital Operations</div>
         <p class="pdesc">As IT, Sales &amp; Digital Operations Lead: ERPNext implementation planning and stakeholder kickoff; CRM pipeline management across 160+ leads with SQL analytics and interactive React dashboard; Google Tag Manager (GTM-5FT9TSKJ) installation on WordPress; Google Merchant Center setup with 10 workspace product feeds; social media strategy; and CSO Rounds Tracker — a web app with Google Sheets API sync used daily by 5 Client Service Officers.</p>
         <div class="prole">Role: IT Lead, Sales Operations &amp; Digital Marketing — Full-time ongoing contributor</div>
         <div class="ptags"><span class="tag">ERPNext</span><span class="tag">CRM</span><span class="tag">Google Tag Manager</span><span class="tag">Merchant Center</span><span class="tag">React Dashboard</span><span class="tag">SQL</span><span class="tag">WordPress</span><span class="tag">Google Sheets API</span></div>
-        <a href="https://www.pyaleworkhub.com.ng" target="_blank" class="plink">Visit Pyale Workhub</a>
+        <a href="https://www.pyaleworkhub.com" target="_blank" class="plink">Visit Pyale Workhub</a>
       </div>
     </div>
 
@@ -867,7 +873,7 @@ footer{background:#040810;padding:1.8rem 6%;display:flex;align-items:center;just
 
 <script>
 // ─── CONFIG ───
-var HN_USER = 'michaelezeonyilimba'; // Change to your Hashnode username after setup
+var HN_USER = 'michaelezeonyilimba';
 
 // ─── PAGE ROUTING ───
 function go(id) {
@@ -884,6 +890,7 @@ function go(id) {
   reveal();
   if (id === 'about') setTimeout(animBars, 200);
   if (id === 'blog') initBlog();
+  setTimeout(loadScreenshots, 300);
 }
 
 // ─── MOBILE NAV ───
@@ -984,21 +991,53 @@ function readTime(content) {
 function initBlog() {
   if (blogDone && allPosts.length) { renderBlog(allPosts, activeCat); return; }
   document.getElementById('blgrid').innerHTML = '<div class="blload"><div class="blspin"></div><span>Loading articles…</span></div>';
+
+  // Use publication host query — more reliable than user query on newer Hashnode API
+  // Cache-bust with id field to force Stellate CDN to return fresh data
+  var query = 'query { publication(host: "' + HN_USER + '.hashnode.dev") { posts(first: 20) { edges { node { id title brief slug publishedAt coverImage { url } content { markdown } tags { name } } } } } }';
+
   fetch('https://gql.hashnode.com', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ query: '{ user(username: "' + HN_USER + '") { publication { posts(page: 0) { title brief slug dateAdded coverImage contentMarkdown tags { name } } } } }' })
+    body: JSON.stringify({ query: query })
   })
   .then(function(r) { return r.json(); })
   .then(function(data) {
-    var posts = data && data.data && data.data.user && data.data.user.publication && data.data.user.publication.posts;
-    if (posts && posts.length) {
-      allPosts = posts;
+    // Try new API format first
+    var edges = data && data.data && data.data.publication && data.data.publication.posts && data.data.publication.posts.edges;
+    if (edges && edges.length) {
+      allPosts = edges.map(function(e) {
+        return {
+          title: e.node.title,
+          brief: e.node.brief,
+          slug: e.node.slug,
+          dateAdded: e.node.publishedAt,
+          coverImage: e.node.coverImage ? e.node.coverImage.url : null,
+          contentMarkdown: e.node.content ? e.node.content.markdown : '',
+          tags: e.node.tags || []
+        };
+      });
       blogDone = true;
       renderBlog(allPosts, activeCat);
-    } else {
-      loadFallback();
+      return;
     }
+    // Fallback to old API format
+    return fetch('https://gql.hashnode.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query: '{ user(username: "' + HN_USER + '") { publication { posts(page: 0) { title brief slug dateAdded coverImage contentMarkdown tags { name } } } } }' })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data2) {
+      var posts = data2 && data2.data && data2.data.user && data2.data.user.publication && data2.data.user.publication.posts;
+      if (posts && posts.length) {
+        allPosts = posts;
+        blogDone = true;
+        renderBlog(allPosts, activeCat);
+      } else {
+        loadFallback();
+      }
+    });
   })
   .catch(function() { loadFallback(); });
 }
@@ -1063,7 +1102,7 @@ function openPost(idx) {
          .replace(/^- (.+)$/gm, '<li>$1</li>')
          .replace(/\n\n/g, '</p><p>');
   document.getElementById('pm-body').innerHTML = '<p>' + md + '</p>';
-  document.getElementById('pm-link').href = 'https://hashnode.com/@' + HN_USER;
+  document.getElementById('pm-link').href = 'https://' + HN_USER + '.hashnode.dev/' + (post.slug || '');
   document.getElementById('pover').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
@@ -1122,10 +1161,28 @@ function submitForm(e) {
   });
 }
 
+// ─── LAZY LOAD SCREENSHOTS ───
+function loadScreenshots() {
+  var imgs = document.querySelectorAll('.pscr[data-src], .ppscr[data-src]');
+  if (!imgs.length) return;
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        var img = e.target;
+        img.src = img.getAttribute('data-src');
+        img.removeAttribute('data-src');
+        obs.unobserve(img);
+      }
+    });
+  }, { rootMargin: '300px' });
+  for (var i = 0; i < imgs.length; i++) obs.observe(imgs[i]);
+}
+
 // ─── INIT ───
 window.addEventListener('scroll', reveal);
 window.addEventListener('load', function() {
   reveal();
+  loadScreenshots();
   var obs = new IntersectionObserver(function(entries) {
     entries.forEach(function(e) { if (e.isIntersecting) { animBars(); obs.disconnect(); } });
   });
