@@ -1001,16 +1001,28 @@ function reveal(){var els=document.querySelectorAll('.rv:not(.in)');var obs=new 
 function animBars(){var bars=document.querySelectorAll('.sbfill');for(var i=0;i<bars.length;i++){var w=bars[i].getAttribute('data-w')||0;bars[i].style.width='0%';(function(bar,width){requestAnimationFrame(function(){requestAnimationFrame(function(){bar.style.width=width+'%';});});})(bars[i],w);}}
 function filter(cat,btn){var btns=document.querySelectorAll('#page-work .fb');for(var i=0;i<btns.length;i++)btns[i].classList.remove('act');btn.classList.add('act');var cards=document.querySelectorAll('#pgrid .pcard');for(var i=0;i<cards.length;i++){var show=cat==='all'||cards[i].getAttribute('data-c')===cat;cards[i].style.display=show?'':'none';}}
 
+var SHOTMAP={
+  'https://ova-sabi.com/':'assets/shots/ova-sabi.jpg',
+  'https://www.pristoglobal.com/':'assets/shots/pristo.jpg',
+  'https://chervro.com/':'assets/shots/chervro.jpg',
+  'https://www.rivuletsolutions.com':'assets/shots/rivulet.jpg',
+  'https://pyaleworkhub.com.ng':'assets/shots/pyale.jpg',
+  'https://pyaleworkhub.com.ng/visibility-summit-2026/':'assets/shots/visibility-summit.jpg'
+};
 var SHOT=[
+  function(u){return SHOTMAP[u]||'';},
   function(u){return 'https://image.thum.io/get/width/1200/crop/900/noanimate/'+u;},
   function(u){return 'https://s.wordpress.com/mshots/v1/'+encodeURIComponent(u)+'?w=1200&h=800';}
 ];
 function shotLoad(img){
   var i=parseInt(img.getAttribute('data-try')||'0',10);
   var u=img.getAttribute('data-url');
-  if(i>=SHOT.length){img.style.display='none';return;}
-  img.setAttribute('data-try',i+1);
-  img.src=SHOT[i](u);
+  while(i<SHOT.length){
+    var src=SHOT[i](u);
+    i++;
+    if(src){img.setAttribute('data-try',i);img.src=src;return;}
+  }
+  img.setAttribute('data-try',i);img.style.display='none';
 }
 function shotFail(img){shotLoad(img);}
 function loadLiveScreenshots(){
