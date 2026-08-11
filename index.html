@@ -9,6 +9,8 @@
 <meta name="author" content="Michael Ezeonyilimba">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#111827">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="mask-icon" href="favicon.svg" color="#5B8DEF">
 <link rel="canonical" href="https://michaelezeonyilimba-source.github.io/mikael-solutions/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://michaelezeonyilimba-source.github.io/mikael-solutions/">
@@ -171,7 +173,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:cen
 .pvis{position:relative;min-height:230px;overflow:hidden;background:var(--bg3)}
 .pvis img{width:100%;height:100%;object-fit:cover}
 .pvis.span{min-height:100%}
-.lscr{opacity:0;transition:opacity .5s ease;background:var(--bg3)}
+.lscr{position:relative;z-index:1;opacity:0;transition:opacity .5s ease}
 .lscr.loaded,.lscr:not([data-src]){opacity:1}
 .pvlive{position:absolute;top:1rem;right:1rem;z-index:3;display:flex;align-items:center;gap:.4rem;background:rgba(13,20,36,.8);backdrop-filter:blur(6px);border:1px solid rgba(34,197,94,.3);color:#4ADE80;font-family:var(--mono);font-size:.6rem;letter-spacing:.06em;padding:.3rem .7rem;border-radius:100px}
 .pvdot{width:5px;height:5px;border-radius:50%;background:#22C55E;animation:pulse 2s infinite}
@@ -352,6 +354,15 @@ a.blcard{text-decoration:none;color:inherit}
 .blimg-txt{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);opacity:.85;text-align:center;padding:0 1rem;line-height:1.6}
 .pubhost{font-family:var(--mono);font-size:.6rem;color:var(--grey-dim)}
 .ctlink span:first-child{font-family:var(--sans)}
+.pvfall{position:absolute;inset:0;z-index:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.45rem;padding:1rem;text-align:center;background:linear-gradient(150deg,var(--bg2),var(--bg3))}
+.pvfall::after{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:34px 34px;opacity:.6}
+.pvfall-t{position:relative;z-index:1;font-family:var(--mono);font-size:.82rem;letter-spacing:.05em;color:var(--blue)}
+.pvfall-s{position:relative;z-index:1;font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--grey-dim)}
+.pvis.tint img{opacity:.5;filter:grayscale(25%) saturate(1.05)}
+.pvis.tint::after{content:'';position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(155deg,rgba(91,141,239,.55),rgba(13,20,36,.7));mix-blend-mode:multiply}
+.lcard-imgrow.tint{position:relative}
+.lcard-imgrow.tint img{opacity:.3;filter:grayscale(20%)}
+.lcard-imgrow.tint::after{content:'';position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(160deg,rgba(91,141,239,.4),rgba(13,20,36,.55));mix-blend-mode:multiply}
 </style>
 </head>
 <body>
@@ -446,7 +457,7 @@ a.blcard{text-decoration:none;color:inherit}
     <p class="lead">Everything below is in production right now. Visit <strong style="color:var(--ink)">Field Work</strong> for the full portfolio.</p>
     <div class="ppgrid">
       <div class="ppcard feat" onclick="go('work')">
-        <div class="ppvis tall"><img class="lscr" data-src="https://api.microlink.io/?url=https%3A%2F%2Fova-sabi.com%2F&screenshot=true&meta=false&embed=screenshot.url" alt="Ova-Sabi live screenshot" onload="this.classList.add('loaded')"></div>
+        <div class="ppvis tall"><div class="pvfall"><span class="pvfall-t">ova-sabi.com</span><span class="pvfall-s">Live site preview</span></div><img class="lscr" data-url="https://ova-sabi.com/" alt="Ova-Sabi live screenshot" onload="this.classList.add('loaded')" onerror="shotFail(this)"></div>
         <div class="ppbody">
           <div class="pptype">Featured · SaaS Platform · ova-sabi.com</div>
           <div class="pptitle">Ova-Sabi Inventory &amp; Expiry Manager</div>
@@ -455,7 +466,7 @@ a.blcard{text-decoration:none;color:inherit}
         </div>
       </div>
       <div class="ppcard" onclick="go('work')">
-        <div class="ppvis"><img class="lscr" data-src="https://api.microlink.io/?url=https%3A%2F%2Fwww.pristoglobal.com%2F&screenshot=true&meta=false&embed=screenshot.url" alt="Pristo Global live screenshot" onload="this.classList.add('loaded')"></div>
+        <div class="ppvis"><div class="pvfall"><span class="pvfall-t">www.pristoglobal.com</span><span class="pvfall-s">Live site preview</span></div><img class="lscr" data-url="https://www.pristoglobal.com/" alt="Pristo Global live screenshot" onload="this.classList.add('loaded')" onerror="shotFail(this)"></div>
         <div class="ppbody">
           <div class="pptype">Retained Client · pristoglobal.com</div>
           <div class="pptitle">Pristo Global Enterprises</div>
@@ -464,7 +475,7 @@ a.blcard{text-decoration:none;color:inherit}
         </div>
       </div>
       <div class="ppcard" onclick="go('work')">
-        <div class="ppvis"><img class="lscr" data-src="https://api.microlink.io/?url=https%3A%2F%2Fchervro.com%2F&screenshot=true&meta=false&embed=screenshot.url" alt="Chervro Global Consult live screenshot" onload="this.classList.add('loaded')"></div>
+        <div class="ppvis"><div class="pvfall"><span class="pvfall-t">chervro.com</span><span class="pvfall-s">Live site preview</span></div><img class="lscr" data-url="https://chervro.com/" alt="Chervro Global Consult live screenshot" onload="this.classList.add('loaded')" onerror="shotFail(this)"></div>
         <div class="ppbody">
           <div class="pptype">Client Website · chervro.com</div>
           <div class="pptitle">Chervro Global Consult</div>
@@ -542,7 +553,7 @@ a.blcard{text-decoration:none;color:inherit}
   <div class="pgrid" id="pgrid">
 
     <div class="pcard sp2" data-c="web">
-      <div class="pvis span"><img class="lscr" data-src="https://api.microlink.io/?url=https%3A%2F%2Fova-sabi.com%2F&screenshot=true&meta=false&embed=screenshot.url" alt="Ova-Sabi live screenshot" onload="this.classList.add('loaded')"><div class="pvlive"><span class="pvdot"></span>Live</div></div>
+      <div class="pvis span"><div class="pvfall"><span class="pvfall-t">ova-sabi.com</span><span class="pvfall-s">Live site preview</span></div><img class="lscr" data-url="https://ova-sabi.com/" alt="Ova-Sabi live screenshot" onload="this.classList.add('loaded')" onerror="shotFail(this)"><div class="pvlive"><span class="pvdot"></span>Live</div></div>
       <div class="pbody">
         <div class="ptype">Featured · SaaS Platform · ova-sabi.com</div>
         <div class="ptitle">Ova-Sabi Inventory &amp; Expiry Manager</div>
@@ -554,7 +565,7 @@ a.blcard{text-decoration:none;color:inherit}
     </div>
 
     <div class="pcard" data-c="web">
-      <div class="pvis"><img class="lscr" data-src="https://api.microlink.io/?url=https%3A%2F%2Fwww.pristoglobal.com%2F&screenshot=true&meta=false&embed=screenshot.url" alt="Pristo Global live screenshot" onload="this.classList.add('loaded')"><div class="pvlive"><span class="pvdot"></span>Live</div></div>
+      <div class="pvis"><div class="pvfall"><span class="pvfall-t">www.pristoglobal.com</span><span class="pvfall-s">Live site preview</span></div><img class="lscr" data-url="https://www.pristoglobal.com/" alt="Pristo Global live screenshot" onload="this.classList.add('loaded')" onerror="shotFail(this)"><div class="pvlive"><span class="pvdot"></span>Live</div></div>
       <div class="pbody">
         <div class="ptype">Retained Client · Website, Email &amp; Growth</div>
         <div class="ptitle">Pristo Global Enterprises Ltd</div>
@@ -566,7 +577,7 @@ a.blcard{text-decoration:none;color:inherit}
     </div>
 
     <div class="pcard" data-c="web">
-      <div class="pvis"><img class="lscr" data-src="https://api.microlink.io/?url=https%3A%2F%2Fchervro.com%2F&screenshot=true&meta=false&embed=screenshot.url" alt="Chervro Global Consult live screenshot" onload="this.classList.add('loaded')"><div class="pvlive"><span class="pvdot"></span>Live</div></div>
+      <div class="pvis"><div class="pvfall"><span class="pvfall-t">chervro.com</span><span class="pvfall-s">Live site preview</span></div><img class="lscr" data-url="https://chervro.com/" alt="Chervro Global Consult live screenshot" onload="this.classList.add('loaded')" onerror="shotFail(this)"><div class="pvlive"><span class="pvdot"></span>Live</div></div>
       <div class="pbody">
         <div class="ptitle">Chervro Global Consult Ltd</div>
         <div class="ptype">Client Website · Rebuild</div>
@@ -578,7 +589,7 @@ a.blcard{text-decoration:none;color:inherit}
     </div>
 
     <div class="pcard" data-c="web">
-      <div class="pvis"><img class="lscr" data-src="https://api.microlink.io/?url=https%3A%2F%2Fwww.rivuletsolutions.com&screenshot=true&meta=false&embed=screenshot.url" alt="Rivulet Solutions live screenshot" onload="this.classList.add('loaded')"><div class="pvlive"><span class="pvdot"></span>Live</div></div>
+      <div class="pvis"><div class="pvfall"><span class="pvfall-t">www.rivuletsolutions.com</span><span class="pvfall-s">Live site preview</span></div><img class="lscr" data-url="https://www.rivuletsolutions.com" alt="Rivulet Solutions live screenshot" onload="this.classList.add('loaded')" onerror="shotFail(this)"><div class="pvlive"><span class="pvdot"></span>Live</div></div>
       <div class="pbody">
         <div class="ptype">Client Website · Corporate</div>
         <div class="ptitle">Rivulet Solutions Limited</div>
@@ -590,7 +601,7 @@ a.blcard{text-decoration:none;color:inherit}
     </div>
 
     <div class="pcard sp2" data-c="it">
-      <div class="pvis span"><img class="lscr" data-src="https://api.microlink.io/?url=https%3A%2F%2Fpyaleworkhub.com.ng&screenshot=true&meta=false&embed=screenshot.url" alt="Pyale Workhub live screenshot" onload="this.classList.add('loaded')"><div class="pvlive"><span class="pvdot"></span>Live</div></div>
+      <div class="pvis span"><div class="pvfall"><span class="pvfall-t">pyaleworkhub.com.ng</span><span class="pvfall-s">Live site preview</span></div><img class="lscr" data-url="https://pyaleworkhub.com.ng" alt="Pyale Workhub live screenshot" onload="this.classList.add('loaded')" onerror="shotFail(this)"><div class="pvlive"><span class="pvdot"></span>Live</div></div>
       <div class="pbody">
         <div class="ptype">IT Lead · Digital Operations · SEO · CRM</div>
         <div class="ptitle">Pyale Workhub, Digital Operations</div>
@@ -602,7 +613,7 @@ a.blcard{text-decoration:none;color:inherit}
     </div>
 
     <div class="pcard sp2" data-c="growth">
-      <div class="pvis span"><img class="lscr" data-src="https://api.microlink.io/?url=https%3A%2F%2Fpyaleworkhub.com.ng%2Fvisibility-summit-2026%2F&screenshot=true&meta=false&embed=screenshot.url" alt="Visibility Summit 2026 event page screenshot" onload="this.classList.add('loaded')"><div class="pvlive"><span class="pvdot"></span>Live</div></div>
+      <div class="pvis span"><div class="pvfall"><span class="pvfall-t">pyaleworkhub.com.ng/visibility-summit-2026</span><span class="pvfall-s">Live site preview</span></div><img class="lscr" data-url="https://pyaleworkhub.com.ng/visibility-summit-2026/" alt="Visibility Summit 2026 event page screenshot" onload="this.classList.add('loaded')" onerror="shotFail(this)"><div class="pvlive"><span class="pvdot"></span>Live</div></div>
       <div class="pbody">
         <div class="ptype">Event Campaign · Digital Lead</div>
         <div class="ptitle">Visibility Summit 2026</div>
@@ -614,7 +625,7 @@ a.blcard{text-decoration:none;color:inherit}
     </div>
 
     <div class="pcard" data-c="education">
-      <div class="pvis"><img src="assets/computer-lab.jpg" alt="ICT tutoring computer lab"></div>
+      <div class="pvis tint"><img src="assets/computer-lab.jpg" alt="ICT tutoring computer lab"></div>
       <div class="pbody">
         <div class="ptype">Education · Secondary Schools</div>
         <div class="ptitle">ICT Tutoring, Secondary Schools</div>
@@ -625,7 +636,7 @@ a.blcard{text-decoration:none;color:inherit}
     </div>
 
     <div class="pcard" data-c="education">
-      <div class="pvis"><img src="assets/pyale-headphones-pink.jpg" alt="Michael at work delivering digital training"></div>
+      <div class="pvis tint"><img src="assets/pyale-headphones-pink.jpg" alt="Michael at work delivering digital training"></div>
       <div class="pbody">
         <div class="ptype">Digital Training · AI &amp; Automation</div>
         <div class="ptitle">TechBarr Digital Academy</div>
@@ -668,7 +679,7 @@ a.blcard{text-decoration:none;color:inherit}
     </div>
 
     <div class="lcard full">
-      <div class="lcard-imgrow" style="grid-template-columns:1fr">
+      <div class="lcard-imgrow tint" style="grid-template-columns:1fr">
         <img src="assets/group-ycsn-1.jpg" alt="YCSN CKC Section members" style="aspect-ratio:21/9">
       </div>
       <div class="lcard-body">
@@ -969,7 +980,7 @@ a.blcard{text-decoration:none;color:inherit}
 
 <script>
 /* TODO: replace with your real Formspree form ID before deploying, or the contact form will not deliver. */
-var FORM_ENDPOINT = 'https://formspree.io/f/mqpzqeyn';
+var FORM_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
 
 function go(id) {
   var pages = document.querySelectorAll('.page');
@@ -990,19 +1001,31 @@ function reveal(){var els=document.querySelectorAll('.rv:not(.in)');var obs=new 
 function animBars(){var bars=document.querySelectorAll('.sbfill');for(var i=0;i<bars.length;i++){var w=bars[i].getAttribute('data-w')||0;bars[i].style.width='0%';(function(bar,width){requestAnimationFrame(function(){requestAnimationFrame(function(){bar.style.width=width+'%';});});})(bars[i],w);}}
 function filter(cat,btn){var btns=document.querySelectorAll('#page-work .fb');for(var i=0;i<btns.length;i++)btns[i].classList.remove('act');btn.classList.add('act');var cards=document.querySelectorAll('#pgrid .pcard');for(var i=0;i<cards.length;i++){var show=cat==='all'||cards[i].getAttribute('data-c')===cat;cards[i].style.display=show?'':'none';}}
 
+var SHOT=[
+  function(u){return 'https://image.thum.io/get/width/1200/crop/900/noanimate/'+u;},
+  function(u){return 'https://s.wordpress.com/mshots/v1/'+encodeURIComponent(u)+'?w=1200&h=800';}
+];
+function shotLoad(img){
+  var i=parseInt(img.getAttribute('data-try')||'0',10);
+  var u=img.getAttribute('data-url');
+  if(i>=SHOT.length){img.style.display='none';return;}
+  img.setAttribute('data-try',i+1);
+  img.src=SHOT[i](u);
+}
+function shotFail(img){shotLoad(img);}
 function loadLiveScreenshots(){
-  var imgs=document.querySelectorAll('.lscr[data-src]');
+  var imgs=document.querySelectorAll('.lscr[data-url]:not([data-init])');
   if(!imgs.length)return;
   var obs=new IntersectionObserver(function(entries){
     entries.forEach(function(e){
       if(e.isIntersecting){
         var img=e.target;
-        img.src=img.getAttribute('data-src');
-        img.removeAttribute('data-src');
+        img.setAttribute('data-init','1');
+        shotLoad(img);
         obs.unobserve(img);
       }
     });
-  },{rootMargin:'300px'});
+  },{rootMargin:'400px'});
   for(var i=0;i<imgs.length;i++) obs.observe(imgs[i]);
 }
 
